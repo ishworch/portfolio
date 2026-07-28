@@ -13,7 +13,6 @@ function Skills() {
     "MongoDB",
     "MySQL",
     "Flutter",
-    "Dart",
     "Unity",
     "Git & GitHub",
     "Figma",
