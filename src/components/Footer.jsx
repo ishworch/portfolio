@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>© 2026 Ishwor Chalise. All Rights Reserved.</p>
+        <p>© {new Date().getFullYear()} Ishwor Chalise. All Rights Reserved.</p>
         <div className="footer-links">
           <a 
             href="https://www.linkedin.com/in/ishwor-chalise-036574293/" 
@@ -12,6 +12,15 @@ function Footer() {
             aria-label="LinkedIn"
           >
             <i className="fab fa-linkedin"></i>
+          </a>
+          <a 
+            href="https://github.com/ishworch" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-link"
+            aria-label="GitHub"
+          >
+            <i className="fab fa-github"></i>
           </a>
           <a 
             href="mailto:ishworchalise1@gmail.com" 
