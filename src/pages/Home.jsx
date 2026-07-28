@@ -1,4 +1,48 @@
+import { useState, useEffect } from 'react';
+
 function Home() {
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const roles = [
+    'Junior Software Developer',
+    'Web Developer',
+    'UI/UX Designer',
+    'Python Developer',
+    'Cybersecurity Enthusiast'
+  ];
+
+  useEffect(() => {
+    const currentRole = roles[currentIndex];
+    
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseDelay = 1500;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (text.length < currentRole.length) {
+          setText(currentRole.substring(0, text.length + 1));
+        } else {
+          // Pause before deleting
+          setTimeout(() => setIsDeleting(true), pauseDelay);
+        }
+      } else {
+        // Deleting
+        if (text.length > 0) {
+          setText(currentRole.substring(0, text.length - 1));
+        } else {
+          setIsDeleting(false);
+          // Move to next role
+          setCurrentIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, currentIndex, roles]);
+
   return (
     <section className="hero">
       <div className="hero-content">
@@ -8,7 +52,10 @@ function Home() {
           Ishwor <span>Chalise</span>
         </h1>
 
-        <h2>Junior Software Developer</h2>
+        <h2 className="typing-text">
+          <span className="cursor">{text}</span>
+          <span className="blinking-cursor">|</span>
+        </h2>
 
         <p className="hero-description">
           I am a BSc (Hons) Computing student passionate about software
@@ -16,11 +63,11 @@ function Home() {
         </p>
 
         <div className="hero-buttons">
-          <a href="/projects" className="btn primary-btn">
+          <a href="#projects" className="btn primary-btn">
             View My Work
           </a>
 
-          <a href="/contact" className="btn secondary-btn">
+          <a href="#contact" className="btn secondary-btn">
             Contact Me
           </a>
         </div>
