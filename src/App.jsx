@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
+import Home from './pages/Home';      // Changed from ./components/Home
+import About from './pages/About';    // Changed from ./components/About
+import Skills from './pages/Skills';  // Changed from ./components/Skills
+import Projects from './pages/Projects'; // Changed from ./components/Projects
+import Contact from './pages/Contact';   // Changed from ./components/Contact
 import Footer from './components/Footer';
 
 function App() {
