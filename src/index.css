@@ -180,14 +180,55 @@ body {
 }
 
 .project-modal {
-  width: min(700px,90%);
+  width: min(700px, 90%);
   max-height: 90vh;
   overflow-y: auto;
   background: #ffffff;
-  color: rgb(0, 0, 0);
+  color: var(--dark);
   border-radius: 16px;
-  padding: 30px;
+  padding: 35px;
   position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: modalSlideUp 0.3s ease;
+}
+
+/* Add smooth animation */
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Better scrollbar */
+.project-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.project-modal::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.project-modal::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .project-modal {
+    padding: 25px;
+    width: 95%;
+  }
 }
 
 .close-btn {
