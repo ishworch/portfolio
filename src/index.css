@@ -356,10 +356,46 @@ body {
 /* FOOTER */
 
 .footer {
-  text-align: center;
-  padding: 25px;
-  background: #111;
+  padding: 20px;
+  background-color: #333;
   color: white;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #0077b5; /* LinkedIn blue */
+}
+
+.footer-link i {
+  font-size: 24px;
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /* RESPONSIVE */
