@@ -17,31 +17,38 @@ function Contact() {
 
           <div className="contact-item">
             <strong>Email</strong>
-            <p>your-email@example.com</p>
+            <p>
+              <a href="mailto:ishworchalise@gmail.com">
+                ishworchalise@gmail.com
+              </a>
+            </p>
           </div>
 
           <div className="contact-item">
             <strong>Location</strong>
             <p>Kathmandu, Nepal</p>
           </div>
+
+          <div className="contact-item">
+            <strong>Social</strong>
+            <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+              <a 
+                href="https://www.linkedin.com/in/ishwor-chalise-036574293/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                LinkedIn
+              </a>
+              <a 
+                href="mailto:ishworchalise@gmail.com"
+                className="social-link"
+              >
+                Email
+              </a>
+            </div>
+          </div>
         </div>
-
-        <form className="contact-form">
-          <input type="text" placeholder="Your Name" />
-
-          <input type="email" placeholder="Your Email" />
-
-          <input type="text" placeholder="Subject" />
-
-          <textarea
-            placeholder="Your Message"
-            rows="6"
-          ></textarea>
-
-          <button type="submit" className="btn primary-btn">
-            Send Message
-          </button>
-        </form>
       </div>
     </section>
   );
