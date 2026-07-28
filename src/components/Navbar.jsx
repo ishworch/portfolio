@@ -2,17 +2,17 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <a href="/home">
+        <a href="/Home">
           Ishwor<span>.</span>
         </a>
       </div>
 
       <div className="nav-links">
-        <a href="/home">Home</a>
-        <a href="/about">About</a>
-        <a href="/skills">Skills</a>
-        <a href="/projects">Projects</a>
-        <a href="/contact">Contact</a>
+        <a href="/Home">Home</a>
+        <a href="/About">About</a>
+        <a href="/Skills">Skills</a>
+        <a href="/Projects">Projects</a>
+        <a href="/Contact">Contact</a>
       </div>
     </nav>
   );
