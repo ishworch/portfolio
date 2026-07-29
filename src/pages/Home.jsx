@@ -41,7 +41,7 @@ function Home() {
   }, [text, isDeleting, currentIndex, roles]);
 
   return (
-    <section className="hero">
+    <section className="page-section hero-section" id="home">
       <div className="hero-content">
         <p className="intro">Hello, I'm</p>
 

@@ -21,7 +21,7 @@ function Skills() {
   ];
 
   return (
-    <section className="page-section">
+    <section className="page-section" id="skills">
       <div className="section-heading">
         <p>What I Work With</p>
         <h1>My Skills</h1>
