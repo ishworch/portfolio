@@ -20,8 +20,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--light);
   color: var(--dark);
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -178,13 +176,101 @@ body {
   color: white;
 }
 
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.project-modal {
+  width: min(700px, 90%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  color: var(--dark);
+  border-radius: 16px;
+  padding: 35px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.project-modal::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.project-modal::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  color: var(--dark);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+  color: var(--primary);
+}
+
+.project-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
+  padding: 10px 18px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.project-links a:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
 /* GENERAL PAGE */
+
 .page-section {
   padding: 100px 8%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-height: calc(100vh - 140px);
 }
 
 /* Add IDs for navigation */
@@ -204,193 +290,6 @@ body {
 
 .section-heading h1 {
   font-size: 48px;
-}
-
-/* MODAL */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-  animation: fadeIn 0.3s ease;
-}
-
-.project-modal {
-  width: min(700px, 95%);
-  max-height: 85vh;
-  overflow-y: auto;
-  background: #ffffff;
-  color: var(--dark);
-  border-radius: 16px;
-  padding: 40px;
-  position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-  animation: modalSlideUp 0.3s ease;
-}
-
-/* Modal smooth animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes modalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Modal scrollbar */
-.project-modal::-webkit-scrollbar {
-  width: 8px;
-}
-
-.project-modal::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.project-modal::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
-}
-
-.project-modal::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
-}
-
-/* Close button */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: transparent;
-  color: var(--dark);
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  transition: 0.3s;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.close-btn:hover {
-  background: #f5f5f5;
-  transform: rotate(90deg);
-}
-
-/* Modal content */
-.project-modal h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  padding-right: 40px;
-}
-
-.project-modal p {
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.project-modal h3 {
-  color: var(--primary);
-  font-size: 18px;
-  margin: 20px 0 10px;
-}
-
-.project-modal ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 20px;
-}
-
-.project-modal ul li {
-  padding: 8px 0;
-  padding-left: 25px;
-  position: relative;
-  color: var(--text);
-  border-bottom: 1px solid #f5f5f5;
-}
-
-.project-modal ul li:last-child {
-  border-bottom: none;
-}
-
-.project-modal ul li::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--primary);
-  font-weight: bold;
-}
-
-.project-links {
-  margin-top: 25px;
-  padding-top: 25px;
-  border-top: 2px solid #f0f0f0;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.project-links a {
-  padding: 12px 24px;
-  background: var(--primary);
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-  font-weight: 500;
-}
-
-.project-links a:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(94, 53, 177, 0.3);
-}
-
-/* Modal responsive */
-@media (max-width: 600px) {
-  .project-modal {
-    padding: 25px;
-    width: 98%;
-  }
-  
-  .project-modal h2 {
-    font-size: 22px;
-  }
-  
-  .close-btn {
-    font-size: 24px;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .project-links {
-    flex-direction: column;
-  }
-  
-  .project-links a {
-    text-align: center;
-  }
 }
 
 /* ABOUT */
@@ -453,14 +352,12 @@ body {
   border-radius: 8px;
   transition: 0.3s;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  cursor: default;
 }
 
 .skill-card:hover {
   transform: translateY(-8px);
   background: var(--primary);
   color: white;
-  box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
 }
 
 .skill-card:hover .skill-icon {
@@ -505,7 +402,6 @@ body {
 
 .project-card h2 {
   margin-bottom: 15px;
-  font-size: 20px;
 }
 
 .project-card p {

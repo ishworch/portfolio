@@ -72,7 +72,11 @@ function Home() {
 
       <div className="hero-image">
         <div className="profile-circle">
-          <span>IC</span>
+         <img
+            src="assets/image.png"
+            alt="Ishwor Chalise"
+            className="profile-image"
+          />
         </div>
       </div>
     </section>
