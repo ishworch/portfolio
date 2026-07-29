@@ -70,13 +70,12 @@ body {
   min-height: calc(100vh - 80px);
   padding: 60px 8%;
   display: flex;
-  align-items: left;
-  justify-content: space-between;
+  align-items: center;          /* Vertically center */
+  justify-content: space-between; /* Text left, image right */
   gap: 60px;
   max-width: 1400px;
   margin: 0 auto;
 }
-
 .hero-content {
   flex: 1.2;
   max-width: 600px;
@@ -158,6 +157,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: auto;
   max-width: 450px;
   min-width: 200px;
 }
