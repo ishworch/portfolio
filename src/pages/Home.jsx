@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import profileImage from '../assets/image.png';
+import profileImage from '/image.png';
 
 function Home() {
   const [text, setText] = useState('');
