@@ -41,7 +41,7 @@ function Home() {
   }, [text, isDeleting, currentIndex, roles]);
 
   return (
-    <section className="page-section hero-section" id="home">
+    <section className="hero" id="home">
       <div className="hero-content">
         <p className="intro">Hello, I'm</p>
 
@@ -72,8 +72,8 @@ function Home() {
 
       <div className="hero-image">
         <div className="profile-circle">
-         <img
-            src="assets/image.png"
+          <img
+            src="/src/assets/image.png"
             alt="Ishwor Chalise"
             className="profile-image"
           />

@@ -785,8 +785,65 @@ body {
   animation: fadeInUp 0.8s ease;
 }
 
+/* Add to your index.css */
+
 .profile-circle {
-  animation: pulse 3s ease-in-out infinite;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(94, 53, 177, 0.3);
+  overflow: hidden;
+  padding: 5px;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background: white;
+}
+
+/* If you want the image to fill the circle completely without padding */
+.profile-circle {
+  padding: 0;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* For smaller screens */
+@media (max-width: 900px) {
+  .profile-circle {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-circle {
+    width: 230px;
+    height: 230px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-circle {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .skill-card,
