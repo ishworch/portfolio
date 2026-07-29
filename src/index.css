@@ -12,14 +12,18 @@
   --text: #555555;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--light);
   color: var(--dark);
+  overflow-x: hidden;
 }
 
 /* NAVBAR */
-
 .navbar {
   height: 80px;
   padding: 0 8%;
@@ -28,6 +32,10 @@ body {
   justify-content: space-between;
   background: white;
   border-bottom: 1px solid #eeeeee;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .logo a {
@@ -58,7 +66,6 @@ body {
 }
 
 /* HERO */
-
 .hero {
   min-height: calc(100vh - 80px);
   padding: 80px 8%;
@@ -70,17 +77,20 @@ body {
 
 .hero-content {
   max-width: 650px;
+  flex: 1;
 }
 
 .intro {
   color: var(--primary);
   font-size: 20px;
   margin-bottom: 15px;
+  font-weight: 500;
 }
 
 .hero h1 {
   font-size: 70px;
   margin-bottom: 10px;
+  line-height: 1.2;
 }
 
 .hero h1 span {
@@ -142,6 +152,7 @@ body {
 }
 
 .hero-image {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,15 +162,21 @@ body {
   width: 330px;
   height: 330px;
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--primary),
-    var(--secondary)
-  );
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 20px 50px rgba(94, 53, 177, 0.3);
+  overflow: hidden;
+  padding: 5px;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background: white;
 }
 
 .profile-circle span {
@@ -168,35 +185,73 @@ body {
   color: white;
 }
 
+/* TYPING ANIMATION */
+.typing-text {
+  font-size: 28px;
+  color: #555;
+  margin-bottom: 25px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
 
+.blinking-cursor {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: bold;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* MODAL - IMPROVED */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.75);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .project-modal {
-  width: min(700px, 90%);
-  max-height: 90vh;
+  width: min(700px, 95%);
+  max-height: 85vh;
   overflow-y: auto;
   background: #ffffff;
   color: var(--dark);
-  border-radius: 16px;
-  padding: 35px;
+  border-radius: 20px;
+  padding: 40px;
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-  animation: modalSlideUp 0.3s ease;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  animation: modalSlideUp 0.4s ease;
 }
 
-/* Add smooth animation */
 @keyframes modalSlideUp {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(40px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -204,9 +259,113 @@ body {
   }
 }
 
-/* Better scrollbar */
+/* Modal content styling */
+.project-modal h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  padding-right: 40px;
+  color: var(--dark);
+}
+
+.project-modal p {
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.project-modal h3 {
+  color: var(--primary);
+  font-size: 18px;
+  margin: 25px 0 12px;
+}
+
+.project-modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.project-modal ul li {
+  padding: 10px 14px;
+  padding-left: 30px;
+  position: relative;
+  color: var(--text);
+  background: #f8f7fc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.project-modal ul li:hover {
+  background: #f0edf7;
+  transform: translateX(4px);
+}
+
+.project-modal ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 10px;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  color: var(--dark);
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  background: #f5f5f5;
+  transform: rotate(90deg);
+}
+
+/* Project links */
+.project-links {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 2px solid #f0f0f0;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.project-links a {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.project-links a:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(94, 53, 177, 0.3);
+}
+
+/* Modal scrollbar */
 .project-modal::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .project-modal::-webkit-scrollbar-track {
@@ -223,47 +382,69 @@ body {
   background: var(--secondary);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Modal responsive */
+@media (max-width: 768px) {
   .project-modal {
-    padding: 25px;
-    width: 95%;
+    padding: 30px;
+    max-height: 90vh;
+  }
+
+  .project-modal h2 {
+    font-size: 24px;
+  }
+
+  .project-modal ul {
+    grid-template-columns: 1fr;
+  }
+
+  .project-links {
+    flex-direction: column;
+  }
+
+  .project-links a {
+    text-align: center;
+    width: 100%;
   }
 }
 
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
+@media (max-width: 480px) {
+  .project-modal {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .project-modal h2 {
+    font-size: 20px;
+  }
+
+  .close-btn {
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .project-modal p {
+    font-size: 14px;
+  }
+
+  .project-modal ul li {
+    font-size: 13px;
+    padding: 8px 12px;
+    padding-left: 26px;
+  }
 }
 
-.project-links {
-  margin-top: 20px;
-  display: flex;
-  gap: 15px;
-}
-
-.project-links a {
-  padding: 10px 18px;
-  background: #6d28d9;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.project-links a:hover {
-  background: #7c3aed;
-}
 /* GENERAL PAGE */
-
 .page-section {
   padding: 100px 8%;
   min-height: calc(100vh - 140px);
+}
+
+/* Add IDs for navigation */
+#home, #about, #skills, #projects, #contact {
+  scroll-margin-top: 80px;
 }
 
 .section-heading {
@@ -281,7 +462,6 @@ body {
 }
 
 /* ABOUT */
-
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -321,8 +501,11 @@ body {
   margin-bottom: 5px;
 }
 
-/* SKILLS */
+.info-card small {
+  color: var(--text);
+}
 
+/* SKILLS */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -336,12 +519,14 @@ body {
   border-radius: 8px;
   transition: 0.3s;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  cursor: default;
 }
 
 .skill-card:hover {
   transform: translateY(-8px);
   background: var(--primary);
   color: white;
+  box-shadow: 0 10px 30px rgba(94, 53, 177, 0.2);
 }
 
 .skill-card:hover .skill-icon {
@@ -356,7 +541,6 @@ body {
 }
 
 /* PROJECTS */
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -369,6 +553,7 @@ body {
   border-radius: 10px;
   transition: 0.3s;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -385,6 +570,7 @@ body {
 
 .project-card h2 {
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
 .project-card p {
@@ -416,7 +602,6 @@ body {
 }
 
 /* CONTACT */
-
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -565,7 +750,6 @@ body {
 }
 
 /* FOOTER */
-
 .footer {
   padding: 20px;
   background-color: #333;
@@ -599,7 +783,7 @@ body {
 }
 
 .footer-link:hover {
-  color: #0077b5; /* LinkedIn blue */
+  color: #0077b5;
 }
 
 .footer-link i {
@@ -607,7 +791,6 @@ body {
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 1024px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -620,7 +803,7 @@ body {
 
 @media (max-width: 900px) {
   .hero {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
     padding: 60px 8%;
   }
@@ -696,6 +879,11 @@ body {
   .social-links {
     justify-content: center;
   }
+
+  .typing-text {
+    font-size: 22px;
+    min-height: 35px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -758,6 +946,11 @@ body {
     padding: 8px 16px;
     font-size: 14px;
   }
+
+  .typing-text {
+    font-size: 18px;
+    min-height: 30px;
+  }
 }
 
 /* Animations */
@@ -783,67 +976,6 @@ body {
 
 .hero-content {
   animation: fadeInUp 0.8s ease;
-}
-
-/* Add to your index.css */
-
-.profile-circle {
-  width: 330px;
-  height: 330px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--primary),
-    var(--secondary)
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 20px 50px rgba(94, 53, 177, 0.3);
-  overflow: hidden;
-  padding: 5px;
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  background: white;
-}
-
-/* If you want the image to fill the circle completely without padding */
-.profile-circle {
-  padding: 0;
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-/* For smaller screens */
-@media (max-width: 900px) {
-  .profile-circle {
-    width: 280px;
-    height: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .profile-circle {
-    width: 230px;
-    height: 230px;
-  }
-}
-
-@media (max-width: 600px) {
-  .profile-circle {
-    width: 200px;
-    height: 200px;
-  }
 }
 
 .skill-card,

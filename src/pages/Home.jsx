@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import profileImage from '../assets/image.png';
 
 function Home() {
   const [text, setText] = useState('');
@@ -43,16 +44,19 @@ function Home() {
   return (
     <section className="hero" id="home">
       <div className="hero-content">
-        <p className="intro">Hello, I'm</p>
+        <p className="intro">👋 Hello, I'm</p>
 
         <h1>
           Ishwor <span>Chalise</span>
         </h1>
 
-        <h2 className="typing-text">
-          <span className="cursor">{text}</span>
-          <span className="blinking-cursor">|</span>
-        </h2>
+        <div className="typing-wrapper">
+          <span className="typing-label">I am a</span>
+          <h2 className="typing-text">
+            <span className="cursor">{text}</span>
+            <span className="blinking-cursor">|</span>
+          </h2>
+        </div>
 
         <p className="hero-description">
           I am a BSc (Hons) Computing student passionate about software
@@ -68,15 +72,48 @@ function Home() {
             Contact Me
           </Link>
         </div>
+
+        <div className="hero-social">
+          <a 
+            href="https://www.linkedin.com/in/ishwor-chalise-036574293/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="social-icon"
+            aria-label="LinkedIn"
+          >
+            <i className="fab fa-linkedin"></i>
+          </a>
+          <a 
+            href="https://github.com/ishworch" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="social-icon"
+            aria-label="GitHub"
+          >
+            <i className="fab fa-github"></i>
+          </a>
+          <a 
+            href="mailto:ishworchalise@gmail.com"
+            className="social-icon"
+            aria-label="Email"
+          >
+            <i className="fas fa-envelope"></i>
+          </a>
+        </div>
       </div>
 
       <div className="hero-image">
         <div className="profile-circle">
           <img
-            src="/image.png"
+            src={profileImage}
             alt="Ishwor Chalise"
             className="profile-image"
           />
+        </div>
+        <div className="floating-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
         </div>
       </div>
     </section>
