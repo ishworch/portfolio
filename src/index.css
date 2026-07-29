@@ -161,8 +161,7 @@ body {
 .profile-circle {
   width: 400px;
   height: 400px;
-  border-radius: 0%;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
