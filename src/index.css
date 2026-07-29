@@ -65,19 +65,21 @@ body {
   color: var(--primary);
 }
 
-/* HERO */
+/* HERO - Fully Responsive */
 .hero {
   min-height: calc(100vh - 80px);
-  padding: 80px 8%;
+  padding: 60px 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50px;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .hero-content {
-  max-width: 650px;
-  flex: 1;
+  flex: 1.2;
+  max-width: 600px;
 }
 
 .intro {
@@ -156,31 +158,42 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 450px;
+  min-width: 200px;
 }
 
 .profile-circle {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 20px 50px rgba(94, 53, 177, 0.3);
   overflow: hidden;
-  padding: 2px;
+  padding: 5px;
   animation: float 6s ease-in-out infinite;
+}
+
+.profile-circle:hover .profile-image {
+  transform: scale(1.08);
 }
 
 .profile-image {
   width: 100%;
-  height: 105%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20%;
+  border-radius: 50%;
   background: white;
   transition: transform 0.5s ease;
 }
-.profile-circle:hover .profile-image {
-  transform: scale(1.08);
+
+.profile-circle span {
+  font-size: 90px;
+  font-weight: bold;
+  color: white;
 }
 
 @keyframes float {
@@ -192,18 +205,12 @@ body {
   }
 }
 
-.profile-circle span {
-  font-size: 90px;
-  font-weight: bold;
-  color: white;
-}
-
 /* TYPING ANIMATION */
 .typing-text {
   font-size: 28px;
   color: #555;
   margin-bottom: 25px;
-  min-height: 40px;
+  min-height: 45px;
   display: flex;
   align-items: center;
 }
@@ -225,237 +232,371 @@ body {
   }
 }
 
-/* MODAL - IMPROVED */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-  animation: fadeIn 0.3s ease;
-}
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+/* Large Desktop */
+@media (min-width: 1201px) {
+  .hero {
+    padding: 80px 8%;
+    gap: 80px;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-.project-modal {
-  width: min(700px, 95%);
-  max-height: 85vh;
-  overflow-y: auto;
-  background: #ffffff;
-  color: var(--dark);
-  border-radius: 20px;
-  padding: 40px;
-  position: relative;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-  animation: modalSlideUp 0.4s ease;
-}
-
-@keyframes modalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
+  .hero-content {
+    max-width: 650px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+
+  .hero h1 {
+    font-size: 70px;
+  }
+
+  .typing-text {
+    font-size: 32px;
+    min-height: 50px;
+  }
+
+  .profile-circle {
+    max-width: 400px;
+  }
+
+  .profile-circle span {
+    font-size: 100px;
   }
 }
 
-/* Modal content styling */
-.project-modal h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  padding-right: 40px;
-  color: var(--dark);
-}
-
-.project-modal p {
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.project-modal h3 {
-  color: var(--primary);
-  font-size: 18px;
-  margin: 25px 0 12px;
-}
-
-.project-modal ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.project-modal ul li {
-  padding: 10px 14px;
-  padding-left: 30px;
-  position: relative;
-  color: var(--text);
-  background: #f8f7fc;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.project-modal ul li:hover {
-  background: #f0edf7;
-  transform: translateX(4px);
-}
-
-.project-modal ul li::before {
-  content: "✓";
-  position: absolute;
-  left: 10px;
-  color: var(--primary);
-  font-weight: bold;
-  font-size: 14px;
-}
-
-/* Close button */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: transparent;
-  color: var(--dark);
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  transition: 0.3s;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.close-btn:hover {
-  background: #f5f5f5;
-  transform: rotate(90deg);
-}
-
-/* Project links */
-.project-links {
-  margin-top: 25px;
-  padding-top: 25px;
-  border-top: 2px solid #f0f0f0;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.project-links a {
-  padding: 12px 24px;
-  background: var(--primary);
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-  font-weight: 500;
-}
-
-.project-links a:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(94, 53, 177, 0.3);
-}
-
-/* Modal scrollbar */
-.project-modal::-webkit-scrollbar {
-  width: 6px;
-}
-
-.project-modal::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.project-modal::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
-}
-
-.project-modal::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
-}
-
-/* Modal responsive */
-@media (max-width: 768px) {
-  .project-modal {
-    padding: 30px;
-    max-height: 90vh;
+/* Desktop */
+@media (max-width: 1200px) {
+  .hero {
+    padding: 60px 6%;
+    gap: 50px;
   }
 
-  .project-modal h2 {
+  .hero h1 {
+    font-size: 60px;
+  }
+
+  .typing-text {
+    font-size: 26px;
+  }
+
+  .profile-circle {
+    max-width: 340px;
+  }
+
+  .profile-circle span {
+    font-size: 80px;
+  }
+}
+
+/* Small Desktop / Large Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    gap: 40px;
+    padding: 50px 5%;
+  }
+
+  .hero-content {
+    max-width: 500px;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+  }
+
+  .typing-text {
     font-size: 24px;
+    min-height: 40px;
   }
 
-  .project-modal ul {
-    grid-template-columns: 1fr;
+  .profile-circle {
+    max-width: 300px;
   }
 
-  .project-links {
-    flex-direction: column;
+  .profile-circle span {
+    font-size: 70px;
   }
 
-  .project-links a {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
     text-align: center;
+    padding: 40px 5%;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-image {
+    max-width: 300px;
+    min-width: 150px;
+  }
+
+  .profile-circle {
+    max-width: 280px;
+  }
+
+  .profile-circle span {
+    font-size: 65px;
+  }
+
+  .hero h1 {
+    font-size: 45px;
+  }
+
+  .typing-text {
+    font-size: 22px;
+    min-height: 38px;
+    justify-content: center;
+  }
+
+  .hero-description {
+    text-align: center;
+    max-width: 500px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .about-content,
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .contact-form .btn {
+    align-self: center;
     width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .project-modal {
-    padding: 20px;
-    border-radius: 16px;
+/* Mobile Large */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 5%;
+    height: auto;
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .project-modal h2 {
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 30px 4%;
+    gap: 30px;
+  }
+
+  .hero-image {
+    max-width: 250px;
+    min-width: 120px;
+  }
+
+  .profile-circle {
+    max-width: 230px;
+  }
+
+  .profile-circle span {
+    font-size: 55px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .typing-text {
     font-size: 20px;
+    min-height: 35px;
   }
 
-  .close-btn {
-    font-size: 22px;
-    width: 36px;
-    height: 36px;
-    top: 10px;
-    right: 10px;
+  .hero-description {
+    font-size: 15px;
+    max-width: 400px;
   }
 
-  .project-modal p {
-    font-size: 14px;
+  .section-heading h1 {
+    font-size: 38px;
   }
 
-  .project-modal ul li {
-    font-size: 13px;
-    padding: 8px 12px;
-    padding-left: 26px;
+  .page-section {
+    padding: 60px 5%;
+  }
+
+  .contact-item {
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
   }
 }
 
-/* GENERAL PAGE */
+/* Mobile Medium */
+@media (max-width: 600px) {
+  .hero {
+    padding: 20px 4%;
+    gap: 25px;
+  }
+
+  .hero-image {
+    max-width: 200px;
+    min-width: 100px;
+  }
+
+  .profile-circle {
+    max-width: 180px;
+  }
+
+  .profile-circle span {
+    font-size: 45px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .typing-text {
+    font-size: 17px;
+    min-height: 30px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    max-width: 350px;
+    margin-bottom: 25px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .intro {
+    font-size: 16px;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading h1 {
+    font-size: 32px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .contact-form .btn {
+    min-width: unset;
+  }
+
+  .contact-info h2 {
+    font-size: 28px;
+  }
+
+  .social-link {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 400px) {
+  .hero {
+    padding: 15px 3%;
+    gap: 20px;
+  }
+
+  .hero-image {
+    max-width: 160px;
+    min-width: 80px;
+  }
+
+  .profile-circle {
+    max-width: 140px;
+  }
+
+  .profile-circle span {
+    font-size: 35px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .typing-text {
+    font-size: 15px;
+    min-height: 25px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+    max-width: 280px;
+    margin-bottom: 20px;
+  }
+
+  .hero-buttons .btn {
+    max-width: 220px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .intro {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   MODAL (Already defined above)
+   ======================================== */
+
+/* ========================================
+   GENERAL PAGE
+   ======================================== */
+
 .page-section {
   padding: 100px 8%;
   min-height: calc(100vh - 140px);
 }
 
-/* Add IDs for navigation */
 #home, #about, #skills, #projects, #contact {
   scroll-margin-top: 80px;
 }
@@ -801,169 +942,6 @@ body {
 
 .footer-link i {
   font-size: 24px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding: 60px 8%;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .about-content,
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .contact-form .btn {
-    align-self: center;
-    width: 100%;
-  }
-
-  .profile-circle {
-    width: 280px;
-    height: 280px;
-  }
-
-  .profile-circle span {
-    font-size: 75px;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 15px 5%;
-    height: auto;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .nav-links {
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero h1 {
-    font-size: 50px;
-  }
-
-  .hero h2 {
-    font-size: 24px;
-  }
-
-  .section-heading h1 {
-    font-size: 38px;
-  }
-
-  .profile-circle {
-    width: 230px;
-    height: 230px;
-  }
-
-  .profile-circle span {
-    font-size: 60px;
-  }
-
-  .page-section {
-    padding: 60px 5%;
-  }
-
-  .contact-item {
-    text-align: center;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
-
-  .typing-text {
-    font-size: 22px;
-    min-height: 35px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  .hero h2 {
-    font-size: 20px;
-  }
-
-  .skills-grid,
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-heading h1 {
-    font-size: 32px;
-  }
-
-  .profile-circle {
-    width: 200px;
-    height: 200px;
-  }
-
-  .profile-circle span {
-    font-size: 50px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .footer-links {
-    justify-content: center;
-  }
-
-  .contact-form .btn {
-    min-width: unset;
-  }
-
-  .contact-info h2 {
-    font-size: 28px;
-  }
-
-  .social-link {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .typing-text {
-    font-size: 18px;
-    min-height: 30px;
-  }
 }
 
 /* Animations */
