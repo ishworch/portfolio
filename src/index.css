@@ -169,7 +169,7 @@ body {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   box-shadow: 0 20px 50px rgba(94, 53, 177, 0.3);
   overflow: hidden;
