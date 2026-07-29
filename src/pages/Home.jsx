@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [text, setText] = useState('');
@@ -21,20 +22,16 @@ function Home() {
 
     const timer = setTimeout(() => {
       if (!isDeleting) {
-        // Typing
         if (text.length < currentRole.length) {
           setText(currentRole.substring(0, text.length + 1));
         } else {
-          // Pause before deleting
           setTimeout(() => setIsDeleting(true), pauseDelay);
         }
       } else {
-        // Deleting
         if (text.length > 0) {
           setText(currentRole.substring(0, text.length - 1));
         } else {
           setIsDeleting(false);
-          // Move to next role
           setCurrentIndex((prev) => (prev + 1) % roles.length);
         }
       }
@@ -63,13 +60,13 @@ function Home() {
         </p>
 
         <div className="hero-buttons">
-          <a href="https://www.ishworchalise.info.np/projects" className="btn primary-btn">
+          <Link to="/projects" className="btn primary-btn">
             View My Work
-          </a>
+          </Link>
 
-          <a href="https://www.ishworchalise.info.np/contact" className="btn secondary-btn">
+          <Link to="/contact" className="btn secondary-btn">
             Contact Me
-          </a>
+          </Link>
         </div>
       </div>
 
