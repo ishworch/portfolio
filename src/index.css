@@ -70,7 +70,7 @@ body {
   min-height: calc(100vh - 80px);
   padding: 60px 8%;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
   gap: 60px;
   max-width: 1400px;
@@ -101,7 +101,7 @@ body {
 
 .hero h2 {
   font-size: 28px;
-  color: #555;
+  color: #220157;
   margin-bottom: 25px;
 }
 
