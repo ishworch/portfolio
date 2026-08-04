@@ -10,15 +10,16 @@ function Skills({ darkMode }) {
   const skills = [
     { name: "HTML", icon: "🌐", level: 90 },
     { name: "CSS", icon: "🎨", level: 85 },
-    { name: "JavaScript", icon: "⚡", level: 80 },
-    { name: "React", icon: "⚛️", level: 75 },
+    { name: "JavaScript", icon: "⚡", level: 60 },
+    { name: "React", icon: "⚛️", level: 70 },
     { name: "Python", icon: "🐍", level: 80 },
-    { name: "Java", icon: "☕", level: 70 },
+    { name: "Java", icon: "☕", level: 55 },
+    { name: "Canva", icon: "🎨", level: 90 },
     { name: "Node.js", icon: "🚀", level: 70 },
     { name: "MongoDB", icon: "🍃", level: 65 },
     { name: "MySQL", icon: "🗄️", level: 70 },
-    { name: "Git", icon: "📊", level: 80 },
-    { name: "Figma", icon: "🎯", level: 75 },
+    { name: "Git", icon: "📊", level: 90 },
+    { name: "Figma", icon: "🎯", level: 90 },
     { name: "Cybersecurity", icon: "🔒", level: 65 }
   ];
 
