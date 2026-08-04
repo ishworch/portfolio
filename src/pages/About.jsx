@@ -54,15 +54,6 @@ function About({ darkMode }) {
             I am constantly learning new technologies and improving my
             problem-solving skills through projects and practical experience.
           </p>
-
-          {/* Resume Download Button */}
-          <a 
-            href="/resume.pdf" 
-            download
-            className="btn primary-btn resume-btn"
-          >
-            📄 Download Resume
-          </a>
         </motion.div>
 
         <motion.div 
@@ -88,7 +79,6 @@ function About({ darkMode }) {
             <p>Kathmandu, Nepal</p>
           </div>
 
-          {/* Skills Progress Bars */}
           <div className="skills-progress">
             <h3>📊 Skills Progress</h3>
             {skills.map((skill, index) => (
