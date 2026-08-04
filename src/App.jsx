@@ -32,11 +32,15 @@ function App() {
       <div className={darkMode ? 'app dark-mode' : 'app'}>
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Routes>
-          <Route path="/" element={<Home darkMode={darkMode} />} />
-          <Route path="/about" element={<About darkMode={darkMode} />} />
-          <Route path="/skills" element={<Skills darkMode={darkMode} />} />
-          <Route path="/projects" element={<Projects darkMode={darkMode} />} />
-          <Route path="/contact" element={<Contact darkMode={darkMode} />} />
+          <Route path="/" element={
+            <>
+              <section id="home"><Home darkMode={darkMode} /></section>
+              <section id="about"><About darkMode={darkMode} /></section>
+              <section id="skills"><Skills darkMode={darkMode} /></section>
+              <section id="projects"><Projects darkMode={darkMode} /></section>
+              <section id="contact"><Contact darkMode={darkMode} /></section>
+            </>
+          } />
         </Routes>
         <Footer darkMode={darkMode} />
       </div>
