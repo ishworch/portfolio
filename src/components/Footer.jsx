@@ -1,6 +1,6 @@
-function Footer() {
+function Footer({ darkMode }) {
   return (
-    <footer className="footer">
+    <footer className={`footer ${darkMode ? 'footer-dark' : ''}`}>
       <div className="footer-content">
         <p>© {new Date().getFullYear()} Ishwor Chalise. All Rights Reserved.</p>
         <div className="footer-links">
@@ -23,7 +23,7 @@ function Footer() {
             <i className="fab fa-github"></i>
           </a>
           <a 
-            href="mailto:ishworchalise1@gmail.com" 
+            href="mailto:ishworchalise@gmail.com" 
             className="footer-link"
             aria-label="Email"
           >

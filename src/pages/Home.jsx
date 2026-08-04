@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import profileImage from '/image.png';
+import { motion } from 'framer-motion';
 
-function Home() {
+function Home({ darkMode }) {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,29 +41,48 @@ function Home() {
     return () => clearTimeout(timer);
   }, [text, isDeleting, currentIndex, roles]);
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
   return (
-    <section className="hero" id="home">
-      <div className="hero-content">
+    <motion.section 
+      className={`hero ${darkMode ? 'hero-dark' : ''}`} 
+      id="home"
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+    >
+      <motion.div className="hero-content" variants={fadeInUp}>
         <p className="intro">👋 Hello, I'm</p>
 
         <h1>
           Ishwor <span>Chalise</span>
         </h1>
 
-        <div className="typing-wrapper">
-          <span className="typing-label">I am a</span>
-          <h2 className="typing-text">
-            <span className="cursor">{text}</span>
-            <span className="blinking-cursor">|</span>
-          </h2>
-        </div>
+        <h2 className="typing-text">
+          <span className="cursor">{text}</span>
+          <span className="blinking-cursor">|</span>
+        </h2>
 
         <p className="hero-description">
           I am a BSc (Hons) Computing student passionate about software
           development, web technologies, UI/UX design, Python, and cybersecurity.
         </p>
 
-        <div className="hero-buttons">
+        <motion.div 
+          className="hero-buttons"
+          variants={fadeInUp}
+        >
           <Link to="/projects" className="btn primary-btn">
             View My Work
           </Link>
@@ -71,9 +90,12 @@ function Home() {
           <Link to="/contact" className="btn secondary-btn">
             Contact Me
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="hero-social">
+        <motion.div 
+          className="hero-social"
+          variants={fadeInUp}
+        >
           <a 
             href="https://www.linkedin.com/in/ishwor-chalise-036574293/" 
             target="_blank" 
@@ -99,24 +121,19 @@ function Home() {
           >
             <i className="fas fa-envelope"></i>
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="hero-image">
+      <motion.div 
+        className="hero-image"
+        variants={fadeInUp}
+        transition={{ delay: 0.3 }}
+      >
         <div className="profile-circle">
-          <img
-            src={profileImage}
-            alt="Ishwor Chalise"
-            className="profile-image"
-          />
+          <span>IC</span>
         </div>
-        <div className="floating-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-        </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
