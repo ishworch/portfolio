@@ -130,7 +130,11 @@ function Home({ darkMode }) {
         transition={{ delay: 0.3 }}
       >
         <div className="profile-circle">
-          <span>IC</span>
+          <img 
+            src="/image.png" 
+            alt="Ishwor Chalise" 
+            className="profile-image"
+          />
         </div>
       </motion.div>
     </motion.section>
