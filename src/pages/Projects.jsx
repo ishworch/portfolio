@@ -69,7 +69,7 @@ function Projects({ darkMode }) {
       title: "Pet Marketplace",
       description: "A responsive web platform where users can browse, buy, and sell pets with an intuitive interface.",
       technologies: "HTML • CSS • JavaScript",
-      category: "Web Development",
+      category: "Design",
       features: [
         "Pet Listings",
         "Category Browsing",
