@@ -1,48 +1,11 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 function Contact({ darkMode }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [subscribed, setSubscribed] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setSubmitStatus(''), 5000);
-    }, 1500);
-  };
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    setSubscribed(true);
-    setTimeout(() => setSubscribed(false), 3000);
-  };
 
   return (
     <motion.section 
@@ -95,13 +58,7 @@ function Contact({ darkMode }) {
                 rel="noopener noreferrer"
                 className="social-link"
               >
-                LinkedIn
-              </a>
-              <a 
-                href="mailto:ishworchalise@gmail.com"
-                className="social-link"
-              >
-                Email
+                <i className="fab fa-linkedin"></i> LinkedIn
               </a>
               <a 
                 href="https://github.com/ishworch"
@@ -109,90 +66,37 @@ function Contact({ darkMode }) {
                 rel="noopener noreferrer"
                 className="social-link"
               >
-                GitHub
+                <i className="fab fa-github"></i> GitHub
+              </a>
+              <a 
+                href="mailto:ishworchalise@gmail.com"
+                className="social-link"
+              >
+                <i className="fas fa-envelope"></i> Email
               </a>
             </div>
           </div>
-
-          {/* Newsletter Subscription */}
-          <div className="newsletter-section">
-            <h3>📬 Subscribe to Newsletter</h3>
-            <p>Get updates on my latest projects and blog posts.</p>
-            <form onSubmit={handleSubscribe} className="newsletter-form">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                required
-                disabled={subscribed}
-              />
-              <button type="submit" className="btn primary-btn" disabled={subscribed}>
-                {subscribed ? '✅ Subscribed!' : 'Subscribe'}
-              </button>
-            </form>
-          </div>
         </motion.div>
 
-        <motion.form 
-          className="contact-form"
-          onSubmit={handleSubmit}
+        <motion.div 
+          className="contact-info"
           initial={{ x: 50, opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {submitStatus === 'success' && (
-            <div className="status-message success">
-              ✅ Message sent successfully! I'll get back to you soon.
+          <div className="contact-card">
+            <h3>📬 Get in Touch</h3>
+            <p>
+              I'm always open to new opportunities, collaborations, or just a friendly chat.
+              Feel free to reach out to me via email or connect with me on social media.
+            </p>
+            <div className="contact-cta">
+              <a href="mailto:ishworchalise@gmail.com" className="btn primary-btn">
+                <i className="fas fa-paper-plane"></i> Send Email
+              </a>
             </div>
-          )}
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            disabled={isSubmitting}
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            disabled={isSubmitting}
-          />
-
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            disabled={isSubmitting}
-          />
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows="6"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            disabled={isSubmitting}
-          />
-
-          <button 
-            type="submit" 
-            className="btn primary-btn"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </motion.form>
+          </div>
+        </motion.div>
       </div>
     </motion.section>
   );
