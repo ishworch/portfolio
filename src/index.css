@@ -989,3 +989,434 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary);
 }
+
+/* ========================================
+   GAMES SECTION
+   ======================================== */
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.game-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  border: 3px solid transparent;
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.game-card .game-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 15px;
+  color: white;
+}
+
+.game-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.game-card p {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.game-container {
+  animation: fadeIn 0.5s ease;
+}
+
+.back-btn {
+  margin-bottom: 30px;
+}
+
+.game-wrapper {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+}
+
+/* ============================================
+   TIC TAC TOE
+   ============================================ */
+
+.game-tic-tac-toe {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.game-tic-tac-toe h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.game-status {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 300px;
+  margin: 0 auto 20px;
+}
+
+.cell {
+  aspect-ratio: 1/1;
+  font-size: 48px;
+  font-weight: bold;
+  background: var(--light);
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell:hover:not(.taken) {
+  background: #f0edf7;
+  border-color: var(--primary);
+}
+
+.cell.taken {
+  cursor: not-allowed;
+  background: #f8f7fc;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3n+1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n) {
+  border-right: none;
+}
+
+.reset-btn {
+  margin-top: 10px;
+}
+
+/* ============================================
+   ROCK PAPER SCISSORS
+   ============================================ */
+
+.game-rps {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.game-rps h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: var(--light);
+  border-radius: 10px;
+}
+
+.rps-choices {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rps-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 25px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rps-btn:hover:not(:disabled) {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.rps-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rps-btn span {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.rps-result {
+  margin-top: 25px;
+}
+
+.rps-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.rps-show div {
+  text-align: center;
+}
+
+.rps-show p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.rps-icon {
+  font-size: 60px;
+}
+
+.rps-vs {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.result-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   MEMORY GAME
+   ============================================ */
+
+.game-memory {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.game-memory h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.memory-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding: 10px;
+  background: var(--light);
+  border-radius: 8px;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+.memory-card {
+  aspect-ratio: 1/1;
+  font-size: 30px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-card:hover:not(.flipped):not(:disabled) {
+  transform: scale(1.05);
+  border-color: var(--primary);
+}
+
+.memory-card.flipped {
+  background: white;
+  color: var(--dark);
+  border-color: var(--primary);
+}
+
+.memory-card:disabled {
+  cursor: not-allowed;
+}
+
+/* ============================================
+   NUMBER GUESSER
+   ============================================ */
+
+.game-number-guesser {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.game-number-guesser h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.guesser-info {
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: var(--light);
+  border-radius: 8px;
+}
+
+.guesser-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+  min-height: 40px;
+  padding: 10px;
+  background: var(--light);
+  border-radius: 8px;
+}
+
+.guesser-input {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.guesser-input input {
+  width: 150px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.guesser-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.guesser-input input:disabled {
+  opacity: 0.5;
+}
+
+/* ============================================
+   RESPONSIVE GAMES
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  
+  .memory-card {
+    font-size: 22px;
+  }
+  
+  .rps-choices {
+    gap: 10px;
+  }
+  
+  .rps-btn {
+    padding: 15px 20px;
+    font-size: 30px;
+  }
+  
+  .rps-show {
+    gap: 15px;
+  }
+  
+  .rps-icon {
+    font-size: 40px;
+  }
+  
+  .guesser-input {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .guesser-input input {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  
+  .memory-card {
+    font-size: 18px;
+  }
+  
+  .cell {
+    font-size: 36px;
+  }
+}

@@ -4,27 +4,20 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
+import Games from './pages/Games';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
-import './index.css';
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={
-          <>
-            <section id="home"><Home /></section>
-            <section id="about"><About /></section>
-            <section id="skills"><Skills /></section>
-            <section id="projects"><Projects /></section>
-            <section id="contact"><Contact /></section>
-          </>
-        } />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/games" element={<Games />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
