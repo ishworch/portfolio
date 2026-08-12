@@ -78,20 +78,6 @@ function Home({ darkMode }) {
           I am a BSc (Hons) Computing student passionate about software
           development, web technologies, and cybersecurity.
         </p>
-
-        <motion.div 
-          className="hero-buttons"
-          variants={fadeInUp}
-        >
-          <Link to="/projects" className="btn primary-btn">
-            View My Work
-          </Link>
-
-          <Link to="/contact" className="btn secondary-btn">
-            Contact Me
-          </Link>
-        </motion.div>
-
         <motion.div 
           className="hero-social"
           variants={fadeInUp}
