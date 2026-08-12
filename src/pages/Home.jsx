@@ -76,7 +76,7 @@ function Home({ darkMode }) {
 
         <p className="hero-description">
           I am a BSc (Hons) Computing student passionate about software
-          development, web technologies, Python, and cybersecurity.
+          development, web technologies, and cybersecurity.
         </p>
 
         <motion.div 
