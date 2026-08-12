@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -23,6 +24,18 @@ body {
   color: var(--dark);
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* Hide scrollbar for all browsers */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 /* NAVBAR */
@@ -51,9 +64,47 @@ body {
   color: var(--primary);
 }
 
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  padding: 5px;
+  background: none;
+  border: none;
+  z-index: 1000;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--dark);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.dark-mode .hamburger span {
+  background: #EFF7FF;
+}
+
 .nav-links {
   display: flex;
   gap: 35px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -65,6 +116,123 @@ body {
 
 .nav-links a:hover {
   color: var(--primary);
+}
+
+.dark-mode .nav-links a {
+  color: #EFF7FF;
+}
+
+/* Mobile Menu Overlay */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 320px;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 40px 20px;
+    transition: right 0.4s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 20px;
+    color: var(--dark);
+  }
+
+  .dark-mode .nav-links {
+    background: #1a0d1a;
+  }
+
+  .dark-mode .nav-links a {
+    color: #EFF7FF;
+  }
+
+  /* Mobile Menu Dark Mode Toggle */
+  .mobile-dark-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .mobile-dark-toggle span {
+    font-size: 14px;
+    color: var(--dark);
+  }
+
+  .dark-mode .mobile-dark-toggle span {
+    color: #EFF7FF;
+  }
+
+  .mobile-dark-toggle .dark-mode-toggle {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  /* Overlay background */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+
+  .menu-overlay.active {
+    display: block;
+  }
+
+  /* Remove desktop dark mode toggle from navbar */
+  .navbar .dark-mode-toggle {
+    display: none;
+  }
+}
+
+/* Desktop dark mode toggle */
+.navbar .dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: 0.3s;
+  color: var(--dark);
+}
+
+.navbar .dark-mode-toggle:hover {
+  transform: rotate(20deg);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .navbar .dark-mode-toggle {
+  color: #EFF7FF;
+}
+
+.dark-mode .navbar .dark-mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* HERO */
@@ -603,24 +771,6 @@ body {
   animation: fadeInUp 0.6s ease;
 }
 
-/* Scroll bar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
-}
-
 /* ========================================
    RESPONSIVE BREAKPOINTS
    ======================================== */
@@ -781,18 +931,17 @@ body {
   .navbar {
     padding: 15px 5%;
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
+    flex-wrap: wrap;
   }
 
-  .nav-links {
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .logo a {
+    font-size: 22px;
   }
 
   .hero {
-    padding: 30px 4%;
+    padding: 30px 5%;
     gap: 30px;
     min-height: 100vh;
   }
@@ -840,10 +989,42 @@ body {
   .social-links {
     justify-content: center;
   }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
 }
 
 /* Mobile Medium */
 @media (max-width: 600px) {
+  .navbar {
+    padding: 12px 4%;
+  }
+
+  .logo a {
+    font-size: 20px;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2.5px;
+  }
+
+  .nav-links {
+    width: 80%;
+    max-width: 280px;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+
   .hero {
     padding: 20px 4%;
     gap: 25px;
@@ -903,11 +1084,11 @@ body {
   }
 
   .section-heading h1 {
-    font-size: 32px;
+    font-size: 28px;
   }
   
   .section-heading {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 
   .footer-content {
@@ -930,12 +1111,60 @@ body {
   }
   
   .page-section {
-    padding: 30px 4%;
+    padding: 25px 4%;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+
+  .contact-card h3 {
+    font-size: 20px;
+  }
+
+  .contact-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .skills-progress {
+    padding: 15px;
+  }
+
+  .filter-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .project-filters {
+    gap: 6px;
   }
 }
 
 /* Mobile Small */
 @media (max-width: 400px) {
+  .navbar {
+    padding: 10px 3%;
+  }
+
+  .logo a {
+    font-size: 18px;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+
+  .nav-links {
+    width: 85%;
+    max-width: 260px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+
   .hero {
     padding: 15px 3%;
     gap: 20px;
@@ -978,6 +1207,20 @@ body {
 
   .intro {
     font-size: 14px;
+  }
+
+  .section-heading h1 {
+    font-size: 24px;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .hero-social {
+    gap: 10px;
   }
 }
 
@@ -1143,31 +1386,43 @@ body {
 }
 
 /* ========================================
-   DARK MODE TOGGLE BUTTON
+   DARK MODE TOGGLE BUTTON (Mobile)
    ======================================== */
 
-.dark-mode-toggle {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: 0.3s;
+.mobile-dark-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .mobile-dark-toggle {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dark-toggle span {
+  font-size: 16px;
+  font-weight: 500;
   color: var(--dark);
 }
 
-.dark-mode-toggle:hover {
-  transform: rotate(20deg);
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.dark-mode .dark-mode-toggle {
+.dark-mode .mobile-dark-toggle span {
   color: #EFF7FF;
 }
 
-.dark-mode .dark-mode-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+.mobile-dark-toggle .dark-mode-toggle {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.mobile-dark-toggle .dark-mode-toggle:hover {
+  transform: rotate(20deg);
 }
 
 /* ========================================

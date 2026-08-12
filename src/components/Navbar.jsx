@@ -1,55 +1,84 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar({ darkMode, toggleDarkMode }) {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    closeMenu();
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleNavClick = (e, sectionId) => {
-    e.preventDefault();
-    if (!isHomePage) {
-      // If not on home page, navigate home first
-      window.location.href = '/';
-      // Wait for navigation, then scroll
-      setTimeout(() => {
-        scrollToSection(sectionId);
-      }, 200);
-    } else {
-      scrollToSection(sectionId);
-    }
-  };
-
   return (
-    <nav className={`navbar ${darkMode ? 'navbar-dark' : ''}`}>
-      <div className="logo">
-        <Link to="/" onClick={(e) => handleNavClick(e, 'home')}>
-        <span>/*</span> Ishwor<span>*/</span>
-        </Link>
-      </div>
+    <>
+      <nav className={`navbar ${darkMode ? 'navbar-dark' : ''}`}>
+        <div className="logo">
+          <Link to="/" onClick={(e) => handleNavClick(e, 'home')}>
+            Ishwor
+          </Link>
+        </div>
 
-      <div className="nav-links">
-        <Link to="/" onClick={(e) => handleNavClick(e, 'home')}>Home</Link>
-        <Link to="/" onClick={(e) => handleNavClick(e, 'about')}>About</Link>
-        <Link to="/" onClick={(e) => handleNavClick(e, 'skills')}>Skills</Link>
-        <Link to="/" onClick={(e) => handleNavClick(e, 'projects')}>Projects</Link>
-        <Link to="/" onClick={(e) => handleNavClick(e, 'contact')}>Contact</Link>
-      </div>
+        <button 
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-      <button 
-        className="dark-mode-toggle" 
-        onClick={toggleDarkMode}
-        aria-label="Toggle dark mode"
-      >
-        {darkMode ? '☀️' : '🌙'}
-      </button>
-    </nav>
+        <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          <Link to="/" onClick={(e) => handleNavClick(e, 'home')}>Home</Link>
+          <Link to="/" onClick={(e) => handleNavClick(e, 'about')}>About</Link>
+          <Link to="/" onClick={(e) => handleNavClick(e, 'skills')}>Skills</Link>
+          <Link to="/" onClick={(e) => handleNavClick(e, 'projects')}>Projects</Link>
+          <Link to="/" onClick={(e) => handleNavClick(e, 'contact')}>Contact</Link>
+          
+          {/* Mobile Dark Mode Toggle */}
+          <div className="mobile-dark-toggle">
+            <span>{darkMode ? '☀️ Light' : '🌙 Dark'}</span>
+            <button 
+              className="dark-mode-toggle" 
+              onClick={() => {
+                toggleDarkMode();
+                closeMenu();
+              }}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? '☀️' : '🌙'}
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Dark Mode Toggle */}
+        <button 
+          className="dark-mode-toggle" 
+          onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
+      </nav>
+
+      {/* Menu Overlay */}
+      <div 
+        className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} 
+        onClick={closeMenu}
+      ></div>
+    </>
   );
 }
 
