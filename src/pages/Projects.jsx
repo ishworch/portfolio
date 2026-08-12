@@ -197,8 +197,8 @@ function Projects({ darkMode }) {
               <div className="project-number">
                 {String(index + 1).padStart(2, "0")}
               </div>
-              <div className="project-category-badge">{project.category}</div>
               <h2>{project.title}</h2>
+              <div className="project-category-badge">{project.category}</div>
               <p>{project.description}</p>
               <span>{project.technologies}</span>
               <button className="project-btn">View Project →</button>
@@ -213,6 +213,7 @@ function Projects({ darkMode }) {
           <div className="project-modal" onClick={(e) => e.stopPropagation()}>
             <button className="close-btn" onClick={() => setSelectedProject(null)}>✕</button>
             <h2>{selectedProject.title}</h2>
+            <div className="modal-category-badge">{selectedProject.category}</div>
             <p>{selectedProject.description}</p>
             <h3>Technologies</h3>
             <p>{selectedProject.technologies}</p>

@@ -27,7 +27,6 @@ function About({ darkMode }) {
     >
       <div className="section-heading">
         <p>Get To Know Me</p>
-        <h1>About Me</h1>
       </div>
 
       <div className="about-content">
@@ -46,8 +45,8 @@ function About({ darkMode }) {
 
           <p>
             I enjoy building practical applications and exploring different
-            areas of technology, including web development, Python, UI/UX
-            design, cybersecurity, and software engineering.
+            areas of technology, including web development, Python,
+            cybersecurity, and software engineering.
           </p>
 
           <p>

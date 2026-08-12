@@ -18,7 +18,6 @@ function Contact({ darkMode }) {
     >
       <div className="section-heading">
         <p>Let's Work Together</p>
-        <h1>Contact Me</h1>
       </div>
 
       <div className="contact-container">
