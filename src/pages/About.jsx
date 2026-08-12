@@ -8,12 +8,12 @@ function About({ darkMode }) {
   });
 
   const skills = [
-    { name: 'Web Development', level: 85 },
-    { name: 'Python', level: 80 },
-    { name: 'React', level: 75 },
-    { name: 'UI/UX Design', level: 70 },
-    { name: 'Cybersecurity', level: 65 },
-    { name: 'Database', level: 70 }
+    { name: 'Web Development', level: 99 },
+    { name: 'Python', level: 99 },
+    { name: 'React', level: 99 },
+    { name: 'UI/UX Design', level: 99 },
+    { name: 'Cybersecurity', level: 99 },
+    { name: 'Database', level: 99 }
   ];
 
   return (
@@ -79,7 +79,7 @@ function About({ darkMode }) {
           </div>
 
           <div className="skills-progress">
-            <h3>📊 Skills Progress</h3>
+            <h3>📊 Future Skills Progress</h3>
             {skills.map((skill, index) => (
               <div key={index} className="skill-progress-item">
                 <div className="skill-progress-label">

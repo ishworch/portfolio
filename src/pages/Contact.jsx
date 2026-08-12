@@ -27,8 +27,6 @@ function Contact({ darkMode }) {
           animate={inView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2>Let's talk</h2>
-
           <p>
             If you have a project idea, opportunity, or just want to connect,
             feel free to contact me.

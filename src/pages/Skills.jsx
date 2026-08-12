@@ -31,7 +31,6 @@ function Skills({ darkMode }) {
     >
       <div className="section-heading">
         <p>What I Work With</p>
-        <h1>My Skills</h1>
       </div>
 
       <motion.div 

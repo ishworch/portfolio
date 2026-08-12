@@ -162,7 +162,6 @@ function Projects({ darkMode }) {
     <section className={`page-section projects-section ${darkMode ? 'dark-section' : ''}`} id="projects">
       <div className="section-heading">
         <p>My Recent Work</p>
-        <h1>Projects</h1>
       </div>
 
       {/* Filter Buttons */}
