@@ -21,6 +21,10 @@ function Navbar({ darkMode, toggleDarkMode }) {
     }
   };
 
+  const handleDarkModeToggle = () => {
+    toggleDarkMode();
+  };
+
   return (
     <>
       <nav className={`navbar ${darkMode ? 'navbar-dark' : ''}`}>
@@ -49,13 +53,10 @@ function Navbar({ darkMode, toggleDarkMode }) {
           
           {/* Mobile Dark Mode Toggle */}
           <div className="mobile-dark-toggle">
-            <span>{darkMode ? '☀️ Light' : '🌙 Dark'}</span>
+            <span>{darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}</span>
             <button 
               className="dark-mode-toggle" 
-              onClick={() => {
-                toggleDarkMode();
-                closeMenu();
-              }}
+              onClick={handleDarkModeToggle}
               aria-label="Toggle dark mode"
             >
               {darkMode ? '☀️' : '🌙'}
@@ -65,8 +66,8 @@ function Navbar({ darkMode, toggleDarkMode }) {
 
         {/* Desktop Dark Mode Toggle */}
         <button 
-          className="dark-mode-toggle" 
-          onClick={toggleDarkMode}
+          className="dark-mode-toggle desktop-toggle" 
+          onClick={handleDarkModeToggle}
           aria-label="Toggle dark mode"
         >
           {darkMode ? '☀️' : '🌙'}
