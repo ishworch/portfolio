@@ -45,7 +45,7 @@ function About({ darkMode }) {
 
           <p>
             I enjoy building practical applications and exploring different
-            areas of technology, including web development, Python,
+            areas of technology, including web development,
             cybersecurity, and software engineering.
           </p>
 
