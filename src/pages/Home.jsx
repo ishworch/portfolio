@@ -83,11 +83,11 @@ function Home({ darkMode }) {
           className="hero-buttons"
           variants={fadeInUp}
         >
-          <Link to="projects" className="btn primary-btn">
+          <Link to="./projects" className="btn primary-btn">
             View My Work
           </Link>
 
-          <Link to="contact" className="btn secondary-btn">
+          <Link to="./contact" className="btn secondary-btn">
             Contact Me
           </Link>
         </motion.div>
