@@ -95,6 +95,7 @@ function Projects({ darkMode }) {
       description: "A web-based weather application that provides weather information using PHP, MySQL, and a clean user interface.",
       technologies: "PHP • MySQL • HTML • CSS • JavaScript",
       category: "Web Development",
+      github: "https://github.com/ishworch/Weather_app",
       features: [
         "Weather Information",
         "Responsive UI",

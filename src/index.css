@@ -1677,3 +1677,39 @@ body {
   background: var(--primary);
   color: white;
 }
+
+
+/* GitHub Link in Modal */
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #24292e;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.github-link:hover {
+  background: #2f363d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.github-link i {
+  font-size: 20px;
+}
+
+/* Dark mode GitHub link */
+.dark-mode .github-link {
+  background: #2f363d;
+  color: #EFF7FF;
+}
+
+.dark-mode .github-link:hover {
+  background: #3d454d;
+}
