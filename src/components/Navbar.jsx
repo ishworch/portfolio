@@ -30,7 +30,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
     <nav className={`navbar ${darkMode ? 'navbar-dark' : ''}`}>
       <div className="logo">
         <Link to="/" onClick={(e) => handleNavClick(e, 'home')}>
-          Ishwor<span>.</span>
+        <span>/*</span> Ishwor<span>*/</span>
         </Link>
       </div>
 
