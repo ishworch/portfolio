@@ -8,7 +8,7 @@ function Home({ darkMode }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const roles = [
-    'Junior Software Developer',
+    'Software Developer',
     'Web Developer',
     'UI/UX Designer',
     'Python Developer',
