@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import profileImage from "../assets/image.png";
 
 function Home({ darkMode }) {
   const [text, setText] = useState('');
@@ -117,7 +117,7 @@ function Home({ darkMode }) {
       >
         <div className="profile-circle">
           <img 
-            src="src\assets\image.png" 
+            src={profileImage} 
             alt="Ishwor Chalise" 
             className="profile-image"
           />
