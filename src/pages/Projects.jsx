@@ -5,7 +5,14 @@ function Projects({ darkMode }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState('All');
 
-  const categories = ['All', 'Web Development', 'Mobile', 'Machine Learning', 'Game Development', 'Design'];
+  const categories = [
+    'All',
+    'Web Development',
+    'Mobile',
+    'Machine Learning',
+    'Game Development',
+    'Design'
+  ];
 
   const projects = [
     {
@@ -13,6 +20,7 @@ function Projects({ darkMode }) {
       description: "A full-stack venue and event hall booking platform that allows customers to search, book, and pay for venues while providing venue owners and administrators with complete booking management.",
       technologies: "React • Node.js • Express • MongoDB",
       category: "Web Development",
+      github: "https://github.com/ishworch/Saan-fyp",
       features: [
         "User, Venue Owner & Admin Roles",
         "Venue Search & Booking",
@@ -45,6 +53,7 @@ function Projects({ darkMode }) {
       description: "A machine learning project developed to predict Alzheimer's disease using healthcare datasets and predictive models.",
       technologies: "Python • Pandas • NumPy • Scikit-learn",
       category: "Machine Learning",
+      github: "https://github.com/ishworch/Alucross",
       features: [
         "Data Cleaning",
         "Feature Engineering",
@@ -133,6 +142,7 @@ function Projects({ darkMode }) {
       description: "A personal portfolio website showcasing my projects, technical skills, education, resume, and contact information.",
       technologies: "React • Vite • CSS • JavaScript",
       category: "Web Development",
+      github: "https://github.com/ishworch/portfolio",
       features: [
         "Responsive Design",
         "Project Showcase",
@@ -146,6 +156,7 @@ function Projects({ darkMode }) {
       description: "A web-based quiz system that allows users to answer multiple-choice questions and view their final score.",
       technologies: "HTML • CSS • JavaScript",
       category: "Web Development",
+      github: "https://github.com/ishworch/Quiz",
       features: [
         "Multiple Choice Questions",
         "Automatic Score Calculation",
@@ -155,12 +166,18 @@ function Projects({ darkMode }) {
     }
   ];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+  const filteredProjects =
+    filter === 'All'
+      ? projects
+      : projects.filter((p) => p.category === filter);
 
   return (
-    <section className={`page-section projects-section ${darkMode ? 'dark-section' : ''}`} id="projects">
+    <section
+      className={`page-section projects-section ${
+        darkMode ? 'dark-section' : ''
+      }`}
+      id="projects"
+    >
       <div className="section-heading">
         <p>My Recent Work</p>
       </div>
@@ -170,7 +187,9 @@ function Projects({ darkMode }) {
         {categories.map((category) => (
           <button
             key={category}
-            className={`filter-btn ${filter === category ? 'active' : ''}`}
+            className={`filter-btn ${
+              filter === category ? 'active' : ''
+            }`}
             onClick={() => setFilter(category)}
           >
             {category}
@@ -178,7 +197,7 @@ function Projects({ darkMode }) {
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         className="projects-grid"
         layout
       >
@@ -191,17 +210,43 @@ function Projects({ darkMode }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1
+              }}
               layout
             >
               <div className="project-number">
                 {String(index + 1).padStart(2, "0")}
               </div>
+
               <h2>{project.title}</h2>
-              <div className="project-category-badge">{project.category}</div>
+
+              <div className="project-category-badge">
+                {project.category}
+              </div>
+
               <p>{project.description}</p>
+
               <span>{project.technologies}</span>
-              <button className="project-btn">View Project →</button>
+
+              <div className="project-buttons">
+                <button className="project-btn">
+                  View Project →
+                </button>
+
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-btn"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    GitHub ↗
+                  </a>
+                )}
+              </div>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -209,20 +254,49 @@ function Projects({ darkMode }) {
 
       {/* Modal */}
       {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="project-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setSelectedProject(null)}>✕</button>
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="project-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="close-btn"
+              onClick={() => setSelectedProject(null)}
+            >
+              ✕
+            </button>
+
             <h2>{selectedProject.title}</h2>
-            <div className="modal-category-badge">{selectedProject.category}</div>
+
+            <div className="modal-category-badge">
+              {selectedProject.category}
+            </div>
+
             <p>{selectedProject.description}</p>
+
             <h3>Technologies</h3>
             <p>{selectedProject.technologies}</p>
+
             <h3>Features</h3>
             <ul>
               {selectedProject.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
               ))}
             </ul>
+
+            {selectedProject.github && (
+              <a
+                href={selectedProject.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-modal-btn"
+              >
+                View on GitHub ↗
+              </a>
+            )}
           </div>
         </div>
       )}
@@ -231,3 +305,4 @@ function Projects({ darkMode }) {
 }
 
 export default Projects;
+
