@@ -117,7 +117,7 @@ function Home({ darkMode }) {
       >
         <div className="profile-circle">
           <img 
-            src="/image.png" 
+            src="src\assets\image.png" 
             alt="Ishwor Chalise" 
             className="profile-image"
           />
