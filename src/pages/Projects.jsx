@@ -255,7 +255,7 @@ function Projects({ darkMode }) {
     target="_blank"
     rel="noopener noreferrer"
   >
-    Live Preview
+         Live Preview
   </a>
 )}
             </motion.div>
