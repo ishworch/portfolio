@@ -100,13 +100,6 @@ function Home({ darkMode }) {
           >
             <i className="fab fa-github"></i>
           </a>
-          <a 
-            href="mailto:ishworchalise@gmail.com"
-            className="social-icon"
-            aria-label="Email"
-          >
-            <i className="fas fa-envelope"></i>
-          </a>
         </motion.div>
       </motion.div>
 
