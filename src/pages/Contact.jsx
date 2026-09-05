@@ -36,7 +36,7 @@ function Contact({ darkMode }) {
             <strong>📧 Email</strong>
             <p>
               <a href="mailto:ishworchalise@gmail.com">
-                ishworchalise@gmail.com
+                ishworchalise1@gmail.com
               </a>
             </p>
           </div>
