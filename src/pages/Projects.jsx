@@ -21,6 +21,7 @@ function Projects({ darkMode }) {
       technologies: "React • Node.js • Express • MongoDB",
       category: "Web Development",
       github: "https://github.com/ishworch/Saan-fyp",
+      Preview: "https://fyp-omega-green.vercel.app/",
       features: [
         "User, Venue Owner & Admin Roles",
         "Venue Search & Booking",
