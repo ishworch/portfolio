@@ -246,8 +246,18 @@ function Projects({ darkMode }) {
                   >
                     GitHub ↗
                   </a>
+                  
                 )}
               </div>
+              {project.preview && (
+  <a
+    href={project.preview}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Live Preview
+  </a>
+)}
             </motion.div>
           ))}
         </AnimatePresence>
