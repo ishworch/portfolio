@@ -35,14 +35,14 @@ function Projects({ darkMode }) {
       ]
     },
     {
-  title: "SAN - Venue Introduction Website",
+  title: "SAN - Official Business Website",
   description:
     "A modern and responsive business website developed for SAN Restro & Party Venue to establish its online presence. The website showcases the company's restaurant services, event hall rental facilities, venue images, videos, and essential business information, helping customers explore the venue and connect for bookings.",
 
   technologies: "React • JavaScript • CSS • Vite",
 
   category: "Web Development",
-
+preview: "https://sanrestroandpartyvenue.com.np",
   features: [
     "Business Introduction & Overview",
     "Restaurant & Event Hall Information",
@@ -61,6 +61,7 @@ function Projects({ darkMode }) {
       description: "A computer vision application that allows users to draw in the air using hand gestures detected through a webcam.",
       technologies: "Python • OpenCV • MediaPipe • NumPy",
       category: "Machine Learning",
+      github: "https://github.com/ishworch/Air_Paint.git",
       features: [
         "Hand Gesture Drawing",
         "Color Selection",
@@ -122,6 +123,20 @@ function Projects({ darkMode }) {
         "Basic Gameplay"
       ]
     },
+    {
+  title: "AI-Based Bank Truck Route Optimization",
+  description: "A Unity-based route optimization project that helps bank trucks travel from three different starting locations to a designated drop-off point and return to their original locations. The system considers previously travelled routes to support efficient route selection.",
+  technologies: "Unity • C# • Artificial Intelligence",
+  category: "AI/ML",
+  github: "https://github.com/ishworch/BankTruck.git",
+  features: [
+    "Three Different Starting Locations",
+    "Shortest and Easiest Route Selection",
+    "Previously Travelled Route Consideration",
+    "Drop-Off Route Planning",
+    "Return-to-Origin Route Planning"
+  ]
+},
     {
       title: "Weatheria - Weather Application",
       description: "A web-based weather application that provides weather information using PHP, MySQL, and a clean user interface.",
