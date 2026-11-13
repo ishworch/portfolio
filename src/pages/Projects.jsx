@@ -35,6 +35,28 @@ function Projects({ darkMode }) {
       ]
     },
     {
+  title: "SAN - Venue Introduction Website",
+  description:
+    "A modern and responsive business website developed for SAN Restro & Party Venue to establish its online presence. The website showcases the company's restaurant services, event hall rental facilities, venue images, videos, and essential business information, helping customers explore the venue and connect for bookings.",
+
+  technologies: "React • JavaScript • CSS • Vite",
+
+  category: "Web Development",
+
+  features: [
+    "Business Introduction & Overview",
+    "Restaurant & Event Hall Information",
+    "Contact Information & Booking Details",
+    "Google Maps Integration",
+    "Image Gallery & Video Showcase",
+    "Responsive Design for All Devices",
+    "Smooth Scrolling Navigation",
+    "Interactive Navigation Bar",
+    "Online Business Presence",
+    "Social Media Integration"
+  ]
+},
+    {
       title: "Air Paint Pro",
       description: "A computer vision application that allows users to draw in the air using hand gestures detected through a webcam.",
       technologies: "Python • OpenCV • MediaPipe • NumPy",
