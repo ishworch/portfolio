@@ -1,13 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
 import Navbar from './components/Navbar';
+
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Contact from './Pages/Contact';
-import Footer from './components/Footer';
 
+import Footer from './components/Footer';
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
